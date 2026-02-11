@@ -1,0 +1,1 @@
+# Tendra clases y funciones para gestionar los tipos de clientes y sus atributos

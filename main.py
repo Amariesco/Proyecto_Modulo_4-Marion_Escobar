@@ -1,0 +1,1 @@
+# Tendra codigo base para el proyecto, como la inicializacion de la aplicacion, configuraciones, etc
