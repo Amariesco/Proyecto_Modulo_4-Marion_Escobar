@@ -23,8 +23,8 @@ def main():
             ema = input("Email: ")
             fon = input("Fono: ")
             
-            print("Tipos de clientes: 1. Regular | 2. VIP | 3. Corporativo")
-            tipo = input("Ingrese una opcion: ")
+            print("\nTipos de clientes: 1. Regular | 2. VIP | 3. Corporativo \n *(Si selecciona otro numero se asignara automaticamente como Regular)*\n") 
+            tipo = input("\nIngrese una opcion: ")
             nuevo_id = sistema.generar_id()
 
             if tipo == "2": # Si el usuario selecciona VIP, se le solicitará ingresar el porcentaje de descuento y se creará un cliente VIP con ese descuento.
@@ -49,6 +49,7 @@ def main():
             break
         else:
             print("La opción no es válida, intente nuevamente:")
+            break
 
 if __name__ == "__main__":
     main()
