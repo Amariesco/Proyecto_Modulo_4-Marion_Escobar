@@ -18,13 +18,13 @@ def main():
         
         opcion = input("Ingrese una opción: ")
 
-        if op == "1": # Si el usuario elige la opción 1, se le solicitará ingresar los datos del cliente y se creará un nuevo cliente según el tipo seleccionado.
+        if opcion == "1": # Si el usuario elige la opción 1, se le solicitará ingresar los datos del cliente y se creará un nuevo cliente según el tipo seleccionado.
             nom = input("Nombre: ")
             ema = input("Email: ")
             fon = input("Fono: ")
             
-            print("Tipos: 1. Regular | 2. VIP | 3. Corporativo")
-            tipo = input("Seleccione: ")
+            print("Tipos de clientes: 1. Regular | 2. VIP | 3. Corporativo")
+            tipo = input("Ingrese una opcion: ")
             nuevo_id = sistema.generar_id()
 
             if tipo == "2": # Si el usuario selecciona VIP, se le solicitará ingresar el porcentaje de descuento y se creará un cliente VIP con ese descuento.
@@ -38,15 +38,17 @@ def main():
 
             sistema.lista_clientes.append(nuevo)
             sistema.guardar_datos()
-            print("¡Cliente guardado con éxito!")
+            print("Cliente guardado con éxito")
 
-        elif op == "2": # Si el usuario elige la opción 2, se mostrará una lista de todos los clientes registrados en el sistema, mostrando su ID, nombre y tipo de cliente.
+        elif opcion == "2": # Si el usuario elige la opción 2, se mostrará una lista de todos los clientes registrados en el sistema, mostrando su ID, nombre y tipo de cliente.
             for c in sistema.lista_clientes:
                 print(c)
 
-        elif op == "6": # Si el usuario elige la opción 6, se guardarán los datos de los clientes en un archivo JSON y se cerrará la aplicación.
+        elif opcion == "6": # Si el usuario elige la opción 6, se guardarán los datos de los clientes en un archivo JSON y se cerrará la aplicación.
             sistema.guardar_datos() 
             break
+        else:
+            print("La opción no es válida, intente nuevamente:")
 
 if __name__ == "__main__":
     main()
