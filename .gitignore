@@ -1,4 +1,3 @@
 /_pycache_
-.pyc
-.json
-.ipynb_checkpoints  
+*.pyc
+*.json
