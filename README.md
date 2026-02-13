@@ -32,9 +32,11 @@ Simbologia:
 3. ``Editar Cliente:``
     ``(seleccionar que dato editar)``
 
-4. ``Eliminar Cliente:``
+4. Eliminar Cliente: 
+    🟢Elimina mediante ID único.
+    - Al eliminar, el sistema guarda cambios automáticamente en el archivo 'clientes.json'.
+    - Incluye manejo de errores si el ID no existe o si se ingresan letras.
     ``por Nombre: (si existe mas de uno con el mismo nombre, mostrar para elegir cual eliminar)``
-    ``por ID:``
 
 5. ``Buscar Cliente:``
     ``Por Nombre:``
@@ -48,7 +50,8 @@ Simbologia:
 
 Tipos de Usuarios (datos/atributos):
     1. Cliente (Nombre, Email, Fono) *No tendra descuentos
-    2. Cliente VIP (Nombre, Email, Fono) *Al ingresar cliente vip, se selecciona cantidad de descuento. ``Cambiar a descuento fijo``
+    2. Cliente VIP (Nombre, Email, Fono) *Al ingresar cliente vip, se selecciona cantidad de descuento. 
     3. Cliente Corporativo (Nombre, Email, Fono, Empresa) *Tendra otro tipo de descuentos dependiendo de la empresa.
 
 **************************
+
