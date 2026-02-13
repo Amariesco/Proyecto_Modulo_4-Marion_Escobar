@@ -56,3 +56,14 @@ class GestorClientes:
     def validar_fono(fono):
         # Verifica que el fono tenga exactamente 11 caracteres y todos sean números
         return fono.isdigit() and len(fono) == 11
+    
+    #Se agrega método eliminar clientes.
+    def eliminar_cliente(self, id_cliente):
+        """Busca un cliente por ID y lo elimina de la lista interna."""
+        for i, cliente in enumerate(self.lista_clientes):
+            if cliente.id_cliente == id_cliente:
+                # Si se encuentra el ID, se elimina de la lista
+                self.lista_clientes.pop(i)
+                self.guardar_datos()  # Guardamos los cambios después de eliminar
+                return True # Éxito
+        return False # ID no encontrado se encontró
