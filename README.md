@@ -18,12 +18,13 @@ Simbologia:
 
 ------ Menu Principal planteado (y sus respectivas funciones) ----------------
 
-1. Crear Clinte: 
+1. Crear Clinte: (Se registra en log creacion de nuevo cliente)
     🟢Nombre: 
     🟢Email: (vadidar uso de @ y . despues del @) 
     🟢Fono: (validar cantidad de numeros 11 y que sea numerico) 
     ``Direccion: (Que sea texto + numeracion)`` [pendiente]
     🟢Tipo de Cliente: (Que sea valido entre las opciones creadas, al menos 3 con diferentes comportamientos y atributos)
+
 
 2. Lista de Clientes: 
     🟢(ID, Nombre, Tipo de cliente y Descuento)
@@ -32,11 +33,10 @@ Simbologia:
 3. ``Editar Cliente:``
     ``(seleccionar que dato editar)``
 
-4. Eliminar Cliente: 
+4. Eliminar Cliente: (Se registra en log la eliminacion de nuevo cliente y el error al eliminar)
     🟢Elimina mediante ID único.
     - Al eliminar, el sistema guarda cambios automáticamente en el archivo 'clientes.json'.
     - Incluye manejo de errores si el ID no existe o si se ingresan letras.
-    ``por Nombre: (si existe mas de uno con el mismo nombre, mostrar para elegir cual eliminar)``
 
 5. ``Buscar Cliente:``
     ``Por Nombre:``

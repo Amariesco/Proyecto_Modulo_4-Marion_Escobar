@@ -62,8 +62,8 @@ class GestorClientes:
                 self.guardar_datos()  # Guardamos los cambios después de eliminar
 
                 return True # Cliente eliminado exitosamente
-            
-        self.registrar_log(f"WARNING - FALLO ELIMINACIÓN: No se pudo eliminar cliente con ID {id_cliente} no existe") #para registrar el fallo
+         
+        self.registrar_log(f"WARNING - FALLO ELIMINACIÓN: No se pudo eliminar cliente con ID {id_cliente} no existe") #para registrar el fallo (Se usa warning para diferenciarlo de los logs exitosos)
         return False # ID no encontrado se encontró
     
     @staticmethod # Método estático para validar formato de email usando regex para una validación más robusta.
