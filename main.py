@@ -46,8 +46,10 @@ def main():
             else:
                 nuevo = Cliente(nuevo_id, nom, ema, fon)
 
-            sistema.lista_clientes.append(nuevo)
-            sistema.guardar_datos()
+
+            sistema.lista_clientes.append(nuevo) # Agrega el nuevo cliente a la lista de clientes del sistema
+            sistema.guardar_datos() 
+            sistema.registrar_log(f"INFO - Se crea nuevo cliente: ID {nuevo_id}, Nombre: {nom}, Tipo: {nuevo.tipo}") # Registra en el log la creación del nuevo cliente con su ID, nombre y tipo
             print("\nCliente guardado con éxito!!")
 
         elif opcion == "2": # Si el usuario elige la opción 2, se mostrará una lista de todos los clientes registrados en el sistema, mostrando su ID, nombre y tipo de cliente.
