@@ -38,10 +38,10 @@ Simbologia:
     - Al eliminar, el sistema guarda cambios automáticamente en el archivo 'clientes.json'.
     - Incluye manejo de errores si el ID no existe o si se ingresan letras.
 
-5. ``Buscar Cliente:``
-    ``Por Nombre:``
-    ``Por ID:``
-    ``Por Email:``
+5. Buscar Cliente:
+    🟢Por ID:
+    ``Por Nombre:`` [pendiente]
+    ``Por Email:`` [pendiente]
 
 6. 🟢Guardar y Salir
 
