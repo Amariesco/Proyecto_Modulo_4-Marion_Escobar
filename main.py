@@ -68,40 +68,39 @@ def main():
                     print("\n¡Error! No existe ningún cliente con ese ID.")
             except ValueError:
                 print("\nPor favor, ingrese un número de ID válido.")
-                elif opcion == "5": # Si el usuario elige la opción 5, podrá buscar clientes por ID, Nombre o Email
-            print("\n Buscar cliente por ID: ")
-            #print("1. Buscar por ID")
+        elif opcion == "5": # Si el usuario elige la opción 5, podrá buscar clientes por ID, Nombre o Email
+            print("\n Buscar cliente por ID ")
+            # ----> por completar en futuras actualizaciones para agregar búsqueda por nombre y email
+            #print("1. Buscar por ID") 
             #print("2. Buscar por Nombre")
             #print("3. Buscar por Email")
             
-            tipo_busqueda = input("\nSeleccione tipo de búsqueda: ")
+            #tipo_busqueda = input("\nSeleccione tipo de búsqueda: ")
             
-            if tipo_busqueda == "1": # Buscara Cliente registrado por ID
-                try:
-                    id_buscar = int(input("\nIngrese el ID del cliente: "))
-                    resultado = sistema.buscar_por_id(id_buscar)
+            #if tipo_busqueda == "1": # Buscara Cliente registrado por ID
+            try:
+                id_buscar = int(input("Ingrese el ID del cliente: "))
+                resultado = sistema.buscar_por_id(id_buscar)
                     
-                    if resultado:
-                        print(f"\nCliente con ID {id_buscar} a sido encontrado")
+                if resultado:
+                    print(f"\nCliente con ID {id_buscar} a sido encontrado")
                         
-                        print(f"\nNombre: {resultado.nombre}")
-                        print(f"Email: {resultado.email}")
-                        print(f"Fono: {resultado.fono}")
-                        print(f"Tipo de cliente: {resultado.tipo}")
+                    print(f"\nNombre: {resultado.nombre}")
+                    print(f"Email: {resultado.email}")
+                    print(f"Fono: {resultado.fono}")
+                    print(f"Tipo de cliente: {resultado.tipo}")
                         
-                        # Mostrar descuento si es VIP o Corporativo
-                        if hasattr(resultado, 'descuento'):
-                            print(f"Descuento: {resultado.descuento}%")
-                        # Mostrar empresa si es Corporativo
-                        if hasattr(resultado, 'empresa'):
-                            print(f"Empresa: {resultado.empresa}")
+                    # Mostrar descuento si es VIP o Corporativo
+                    if hasattr(resultado, 'descuento'):
+                        print(f"Descuento: {resultado.descuento}%")
+                    # Mostrar empresa si es Corporativo
+                    if hasattr(resultado, 'empresa'):
+                        print(f"Empresa: {resultado.empresa}")
                     else:
                         print(f"\nNo se encontró ningún cliente con ID {id_buscar}")
                         
-                except ValueError:
-                    print("\nError: Debe ingresar un número válido de ID")
-            else:
-                print("\nOpción de búsqueda no válida")
+            except ValueError:
+                print("\nError: Debe ingresar un número válido de ID")
 
         elif opcion == "6": # Si el usuario elige la opción 6, se guardarán los datos de los clientes en un archivo JSON y se cerrará la aplicación.
             print("\nGuardando datos y saliendo del sistema...")

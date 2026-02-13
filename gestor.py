@@ -36,9 +36,9 @@ class GestorClientes:
         return max(c.id_cliente for c in self.lista_clientes) + 1
     
     def crear_clientes_por_defecto(self): # Crea 3 clientes por defecto si no existe el archivo JSON.
-        c1 = Cliente(1, "Ana Perez", "ana@mail.com", "11223344")
-        c2 = ClienteVIP(2, "Luis Soto", "luis@vip.com", "55667788", 25)
-        c3 = ClienteCorporativo(3, "Marta Diaz", "marta@empresa.com", "99001122", "PythonCorp")
+        c1 = Cliente(1, "Ana Perez", "ana@mail.com", "511223344")
+        c2 = ClienteVIP(2, "Luis Soto", "luis@vip.com", "955667788", 25)
+        c3 = ClienteCorporativo(3, "Marta Diaz", "marta@empresa.com", "999001122", "PythonCorp")
         
         self.lista_clientes = [c1, c2, c3]
         self.guardar_datos()
@@ -66,6 +66,17 @@ class GestorClientes:
         self.registrar_log(f"WARNING - FALLO ELIMINACIÓN: No se pudo eliminar cliente con ID {id_cliente} no existe") #para registrar el fallo (Se usa warning para diferenciarlo de los logs exitosos)
         return False # ID no encontrado se encontró
     
+    # Método para buscar clientes por ID
+    def buscar_por_id(self, id_cliente):
+        for cliente in self.lista_clientes:
+            if cliente.id_cliente == id_cliente:
+                return cliente  # Retorna el cliente si lo encuentra
+        return None  # Retorna None si no encuentra el cliente
+    
+    pass  # Método para buscar clientes por nombre
+
+    pass # Método para buscar clientes por email
+    
     @staticmethod # Método estático para validar formato de email usando regex para una validación más robusta.
     def validar_email(email):
         # Valida que contenga '@' y al menos un '.' después de la arroba
@@ -78,5 +89,5 @@ class GestorClientes:
     @staticmethod # Método estático para validar formato de teléfono, asegurando que tenga exactamente 11 dígitos y solo números.
     def validar_fono(fono):
         # Verifica que el fono tenga exactamente 11 caracteres y todos sean números
-        return fono.isdigit() and len(fono) == 11
+        return fono.isdigit() and len(fono) == 9
     
