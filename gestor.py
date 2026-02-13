@@ -2,6 +2,7 @@
 
 import json
 import os
+import re  # Importamos para validaciones complejas
 from modelos import Cliente, ClienteVIP, ClienteCorporativo
 
 class GestorClientes:
@@ -41,3 +42,17 @@ class GestorClientes:
         
         self.lista_clientes = [c1, c2, c3]
         self.guardar_datos()
+
+    @staticmethod # Método estático para validar formato de email usando regex para una validación más robusta.
+    def validar_email(email):
+        # Valida que contenga '@' y al menos un '.' después de la arroba
+        if "@" in email:
+            partes = email.split("@")
+            if "." in partes[1]:
+                return True
+        return False
+    
+    @staticmethod # Método estático para validar formato de teléfono, asegurando que tenga exactamente 11 dígitos y solo números.
+    def validar_fono(fono):
+        # Verifica que el fono tenga exactamente 11 caracteres y todos sean números
+        return fono.isdigit() and len(fono) == 11
