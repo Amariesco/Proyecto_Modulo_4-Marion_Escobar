@@ -2,12 +2,13 @@
 
 import json
 import os
-import re  # Importamos para validaciones complejas
+from datetime import datetime # Para obtener la fecha actual
 from modelos import Cliente, ClienteVIP, ClienteCorporativo
 
 class GestorClientes:
     def __init__(self):
         self.archivo = "clientes.json"
+        self.archivo_log = "log.txt" # Archivo de texto para el log
         self.lista_clientes = []
         self.cargar_datos()
 
@@ -42,14 +43,27 @@ class GestorClientes:
         self.lista_clientes = [c1, c2, c3]
         self.guardar_datos()
 
+    def registrar_log(self, mensaje): # Método para registrar eventos importantes en un archivo de log con fecha y hora.
+        fecha_hora = datetime.now().strftime("%Y-%m-%d %H:%M:%S") # Obtiene la fecha y hora actual en formato legible
+        linea_completa = f"[{fecha_hora}] {mensaje}\n" # Formatea la línea con la fecha y el mensaje
+
+        with open(self.archivo_log, "a", encoding="utf-8") as archivo: # 'with' para asegurar que el archivo se cierre solo al terminar
+            archivo.write(linea_completa)
+                
+
     # Método para eliminar clientes.
     def eliminar_cliente(self, id_cliente):
         for i, cliente in enumerate(self.lista_clientes):
             if cliente.id_cliente == id_cliente:
                 # Si se encuentra el ID, cliente se elimina de la lista
+                nombre_eliminado = cliente.nombre
                 self.lista_clientes.pop(i)
+                self.registrar_log(f"INFO - Eliminacion de Cliente: ID {id_cliente}, Nombre: {nombre_eliminado}") # Para registrar el éxito
                 self.guardar_datos()  # Guardamos los cambios después de eliminar
+
                 return True # Cliente eliminado exitosamente
+            
+        self.registrar_log(f"WARNING - FALLO ELIMINACIÓN: No se pudo eliminar cliente con ID {id_cliente} no existe") #para registrar el fallo
         return False # ID no encontrado se encontró
     
     @staticmethod # Método estático para validar formato de email usando regex para una validación más robusta.
