@@ -19,9 +19,19 @@ def main():
         opcion = input("Ingrese una opción: ")
 
         if opcion == "1": # Si el usuario elige la opción 1, se le solicitará ingresar los datos del cliente y se creará un nuevo cliente según el tipo seleccionado.
-            nom = input("Nombre: ")
-            ema = input("Email: ")
-            fon = input("Fono: ")
+            nom = input("\nNombre: ")
+            
+            while True: # Validación de Email utilizando el método estático del gestor para asegurar que el formato sea correcto antes de continuar con la creación del cliente.
+                ema = input("\nEmail (ejemplo@dominio.com): ")
+                if sistema.validar_email(ema):
+                    break
+                print("Error: Verifique el email, este debe contener '@' y un '.' después de la arroba para ser válido.")
+            
+            while True: # Validación de Fono utilizando el método estático del gestor para asegurar que el número tenga exactamente 11 dígitos y solo contenga números antes de continuar con la creación del cliente.
+                fon = input("\nFono (ingresar 11 dígitos numéricos, ej: 56912345678): ")
+                if sistema.validar_fono(fon):
+                    break
+                print("Error: Verifique el fono, este debe tener exactamente 11 números (sin espacios ni signos).")
             
             print("\nTipos de clientes: 1. Regular | 2. VIP | 3. Corporativo \n *(Si selecciona otro numero se asignara automaticamente como Regular)*\n") 
             tipo = input("\nIngrese una opcion: ")
@@ -38,13 +48,15 @@ def main():
 
             sistema.lista_clientes.append(nuevo)
             sistema.guardar_datos()
-            print("Cliente guardado con éxito")
+            print("\nCliente guardado con éxito!!")
 
         elif opcion == "2": # Si el usuario elige la opción 2, se mostrará una lista de todos los clientes registrados en el sistema, mostrando su ID, nombre y tipo de cliente.
             for c in sistema.lista_clientes:
                 print(c)
 
         elif opcion == "6": # Si el usuario elige la opción 6, se guardarán los datos de los clientes en un archivo JSON y se cerrará la aplicación.
+            print("\nGuardando datos y saliendo del sistema...")
+            print("¡Hasta luego!")
             sistema.guardar_datos() 
             break
         else:
