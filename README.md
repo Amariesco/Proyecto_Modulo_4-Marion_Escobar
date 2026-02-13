@@ -1,6 +1,13 @@
 # Tendremos aqui documentacion base, explicacion del programa y procesos en su construccion.
 
 *******************************
+Archivos:
+main.py -----------> Menú principal, codigo base para el proyecto, como la inicializacion de la aplicacion, configuraciones, etc
+gestor.py ---------> Logica de gestion de usuarios, como agregar, eliminar, modificar, validar etc
+modelos.py --------> Clases y funciones para gestionar los tipos de clientes y sus atributos
+UML.drawio.png ----> UML / Diagrama de clases
+
+*******************************
 
 ------ Menu Principal planteado (y sus respectivas funciones) ----------------
 
