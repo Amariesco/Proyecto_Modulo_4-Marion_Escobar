@@ -34,4 +34,10 @@ class GestorClientes:
         return max(c.id_cliente for c in self.lista_clientes) + 1
     
     def crear_clientes_por_defecto(self):
-        pass
+        """Si al ingrsar a lista y no hay datos se crean 3 clientes iniciales y los guarda."""
+        c1 = Cliente(1, "Ana Perez", "ana@mail.com", "11223344")
+        c2 = ClienteVIP(2, "Luis Soto", "luis@vip.com", "55667788", 25)
+        c3 = ClienteCorporativo(3, "Marta Diaz", "marta@empresa.com", "99001122", "PythonCorp")
+        
+        self.lista_clientes = [c1, c2, c3]
+        self.guardar_datos()
