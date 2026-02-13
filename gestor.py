@@ -29,7 +29,7 @@ class GestorClientes:
     def guardar_datos(self):
         datos_dict = [c.a_diccionario() for c in self.lista_clientes]
         with open(self.archivo, "w") as f:
-            json.dump(datos_dict, f, indent=4)
+            json.dump(datos_dict, f, indent=4) # indent=4 para que el JSON se vea más legible
 
     def generar_id(self):
         if not self.lista_clientes: return 1
@@ -77,12 +77,66 @@ class GestorClientes:
 
     pass # Método para buscar clientes por email
     
-    @staticmethod # Método estático para validar formato de email usando regex para una validación más robusta.
+    # Método para editar cliente
+    def editar_cliente(self, id_cliente, campo, nuevo_valor): 
+        cliente = self.buscar_por_id(id_cliente) 
+        
+        if not cliente: # Primero buscamos el cliente por su ID para asegurarnos de que existe antes de intentar editarlo. Si no se encuentra, retornamos False para indicar que la edición no fue posible.
+            return False  # Cliente no encontrado
+        
+        valor_anterior = None # Guardamos el valor anterior para el log
+        
+        if campo == "nombre":
+            valor_anterior = cliente.nombre
+            cliente.nombre = nuevo_valor
+
+        elif campo == "email":
+            if not self.validar_email(nuevo_valor): # Se usa 'not' para negar la validación, si el nuevo valor no es un fono válido, se retorna False para indicar que la edición no fue posible.
+                return False  # Email inválido
+            
+            valor_anterior = cliente.email
+            cliente.email = nuevo_valor
+
+        elif campo == "fono":
+            if not self.validar_fono(nuevo_valor): 
+                return False  # Fono inválido
+            
+            valor_anterior = cliente.fono
+            cliente.fono = nuevo_valor
+
+        elif campo == "descuento": # Solo para ClienteVIP y ClienteCorporativo
+            if hasattr(cliente, 'descuento'): #hasattr verifica si el cliente tiene el atributo 'descuento', lo que indica que es un ClienteVIP o ClienteCorporativo. Si el cliente no tiene este atributo, se retorna False para indicar que no se puede editar el descuento.
+                valor_anterior = cliente.descuento
+                cliente.descuento = int(nuevo_valor)
+            else:
+                return False  # El cliente no tiene descuento
+            
+        elif campo == "empresa": # Solo para ClienteCorporativo
+            
+            if hasattr(cliente, 'empresa'):
+                valor_anterior = cliente.empresa
+                cliente.empresa = nuevo_valor
+
+                if cliente.empresa.lower() == "pythoncorp": # Actualizar descuento ueva empresa es PythonCorp, se le asigna un descuento del 50%, de lo contrario, se le asigna un descuento del 10%.
+                    cliente.descuento = 50
+                else:
+                    cliente.descuento = 10
+            else:
+                return False  # El cliente no tiene empresa
+        else:
+            return False  # Campo no válido
+        
+        self.registrar_log(f"INFO - Edición de Cliente ID {id_cliente}: Campo '{campo}' cambiado de '{valor_anterior}' a '{nuevo_valor}'") # Para registrar la edición en el log
+        self.guardar_datos()  # Guardar cambios
+        return True
+
+
+    @staticmethod # Método estático para validar formato de email.
     def validar_email(email):
         # Valida que contenga '@' y al menos un '.' después de la arroba
         if "@" in email:
-            partes = email.split("@")
-            if "." in partes[1]:
+            partes = email.split("@") # Divide el email en dos partes: antes y después de la arroba
+            if "." in partes[1]: # Verifica que haya un punto en la parte del dominio (después de la arroba)
                 return True
         return False
     
