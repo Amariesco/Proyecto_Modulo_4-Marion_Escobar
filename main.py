@@ -38,11 +38,17 @@ def main():
             nuevo_id = sistema.generar_id()
 
             if tipo == "2": # Si el usuario selecciona VIP, se le solicitará ingresar el porcentaje de descuento y se creará un cliente VIP con ese descuento.
-                desc = int(input("% Descuento: "))
-                if not 0 <= desc <= 100:
-                    print("Error: El descuento debe estar entre 0 y 100.")
-                    continue
-                nuevo = ClienteVIP(nuevo_id, nom, ema, fon, desc)
+                while True: # Bucle para validar el descuento
+                    try:
+                        desc = int(input("% Descuento (0-100): "))
+                        if 0 <= desc <= 100:
+                            nuevo = ClienteVIP(nuevo_id, nom, ema, fon, desc)
+                            break # Sale del bucle cuando el descuento es válido
+                        else:
+                            print("Error: El descuento debe estar entre 0 y 100.")
+                    except ValueError:
+                        print("Error: Debe ingresar un número válido.")  
+
             elif tipo == "3":
                 empresa = input("Nombre de la Empresa: ")
                 nuevo = ClienteCorporativo(nuevo_id, nom, ema, fon, empresa)
