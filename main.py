@@ -12,7 +12,7 @@ def main():
         print("1. Crear Cliente") 
         print("2. Lista de Clientes")
         # print("3. Editar Cliente")
-        # print("4. Eliminar Cliente")
+        print("4. Eliminar Cliente")
         # print("5. Buscar Cliente")
         print("6. Guardar y Salir")
         
@@ -53,6 +53,19 @@ def main():
         elif opcion == "2": # Si el usuario elige la opción 2, se mostrará una lista de todos los clientes registrados en el sistema, mostrando su ID, nombre y tipo de cliente.
             for c in sistema.lista_clientes:
                 print(c)
+
+        elif opcion == "4": # Si el usuario elige la opción 4, se le solicitará ingresar el ID del cliente que desea eliminar y se procederá a eliminarlo del sistema.
+            try: # Se intenta convertir el ID ingresado a un número entero, si el usuario ingresa un valor no numérico se captura la excepción y se muestra un mensaje de error.
+                id_a_eliminar = int(input("Ingrese el ID del cliente que desea eliminar: "))
+                
+                # Ejecutamos la eliminación en gestor.py
+                if sistema.eliminar_cliente(id_a_eliminar):
+                    sistema.guardar_datos()  # Guardamos los cambios después de eliminar
+                    print(f"\n Cliente con ID {id_a_eliminar} ha sido eliminado correctamente.")
+                else:
+                    print("\n¡Error! No existe ningún cliente con ese ID.")
+            except ValueError:
+                print("\nPor favor, ingrese un número de ID válido.")
 
         elif opcion == "6": # Si el usuario elige la opción 6, se guardarán los datos de los clientes en un archivo JSON y se cerrará la aplicación.
             print("\nGuardando datos y saliendo del sistema...")
