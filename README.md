@@ -30,8 +30,8 @@ Simbologia:
     🟢(ID, Nombre, Tipo de cliente y Descuento)
     ``(mostrar todos los datos)`` 
 
-3. ``Editar Cliente:``
-    ``(seleccionar que dato editar)``
+3. Editar Cliente:
+    🟢(seleccionar que dato editar, se valida el tipo de cliente para editar descuento o empresa)
 
 4. Eliminar Cliente: (Se registra en log la eliminacion de nuevo cliente y el error al eliminar)
     🟢Elimina mediante ID único.
