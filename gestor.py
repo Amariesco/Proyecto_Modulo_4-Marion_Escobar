@@ -34,8 +34,7 @@ class GestorClientes:
         if not self.lista_clientes: return 1
         return max(c.id_cliente for c in self.lista_clientes) + 1
     
-    def crear_clientes_por_defecto(self):
-        """Si al ingrsar a lista y no hay datos se crean 3 clientes iniciales y los guarda."""
+    def crear_clientes_por_defecto(self): # Crea 3 clientes por defecto si no existe el archivo JSON.
         c1 = Cliente(1, "Ana Perez", "ana@mail.com", "11223344")
         c2 = ClienteVIP(2, "Luis Soto", "luis@vip.com", "55667788", 25)
         c3 = ClienteCorporativo(3, "Marta Diaz", "marta@empresa.com", "99001122", "PythonCorp")
@@ -43,6 +42,16 @@ class GestorClientes:
         self.lista_clientes = [c1, c2, c3]
         self.guardar_datos()
 
+    # Método para eliminar clientes.
+    def eliminar_cliente(self, id_cliente):
+        for i, cliente in enumerate(self.lista_clientes):
+            if cliente.id_cliente == id_cliente:
+                # Si se encuentra el ID, cliente se elimina de la lista
+                self.lista_clientes.pop(i)
+                self.guardar_datos()  # Guardamos los cambios después de eliminar
+                return True # Cliente eliminado exitosamente
+        return False # ID no encontrado se encontró
+    
     @staticmethod # Método estático para validar formato de email usando regex para una validación más robusta.
     def validar_email(email):
         # Valida que contenga '@' y al menos un '.' después de la arroba
@@ -57,13 +66,3 @@ class GestorClientes:
         # Verifica que el fono tenga exactamente 11 caracteres y todos sean números
         return fono.isdigit() and len(fono) == 11
     
-    #Se agrega método eliminar clientes.
-    def eliminar_cliente(self, id_cliente):
-        """Busca un cliente por ID y lo elimina de la lista interna."""
-        for i, cliente in enumerate(self.lista_clientes):
-            if cliente.id_cliente == id_cliente:
-                # Si se encuentra el ID, se elimina de la lista
-                self.lista_clientes.pop(i)
-                self.guardar_datos()  # Guardamos los cambios después de eliminar
-                return True # Éxito
-        return False # ID no encontrado se encontró
