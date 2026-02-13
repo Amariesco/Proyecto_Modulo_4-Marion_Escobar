@@ -1,4 +1,4 @@
-# Aqui tendremos la logica de gestion de usuarios, como agregar, eliminar, modificar, validar etc
+# Aqui tendremos la logica de gestion de clientes, como agregar, eliminar, modificar, validar etc
 
 import json
 import os
