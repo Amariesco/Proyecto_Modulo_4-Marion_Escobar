@@ -46,6 +46,7 @@ Funcionalidades Pendientes:
  - Búsqueda por email
  - Campo dirección con validación
  - Mejoras visuales en los menús
+ - Implementar confirmacion antes de eliminar
 
 *******************************
  INFORMACION RELEVANTE MIENTRAS SE PROGRAMA:
@@ -89,7 +90,7 @@ _________________________________________________
  - Cierre seguro de la aplicación
 
 ``* Revisar menus y dejarlos agradables visualmente`` [pendiente]
-
+``* Implementar confirmacion antes de eliminar para evitar errores`` [pendiente]
 ______________________________________________________________
 
 Tipos de Usuarios (datos/atributos):
