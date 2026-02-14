@@ -5,13 +5,14 @@ Archivos:
 main.py -----------> Menú principal, codigo base para el proyecto, como la inicializacion de la aplicacion, configuraciones, etc
 gestor.py ---------> Logica de gestion de usuarios, como agregar, eliminar, modificar, validar etc
 modelos.py --------> Clases y funciones para gestionar los tipos de clientes y sus atributos
-UML.drawio ----> UML / Diagrama de clases
+UML.drawio --------> UML / Diagrama de clases
+README.md ---------> Información sobre el Código
 
 *******************************
 
 Simbologia: 
 
-``[Incompleto]``= Por hacer / agregar código
+``[Pendiente]``= Por hacer / agregar código
 🟢 = Listo y funcionando
 
 *******************************
@@ -22,7 +23,7 @@ Simbologia:
     🟢Nombre: 
     🟢Email: (vadidar uso de @ y . despues del @) 
     🟢Fono: (validar cantidad de numeros 11 y que sea numerico) 
-    ``Direccion: (Que sea texto + numeracion)`` [pendiente]
+    ``Dirección: (Que sea texto + numeracion)`` [pendiente]
     🟢Tipo de Cliente: 1. Regular | 2. VIP | 3. Corporativo (Si selecciona otro numero se asignara automaticamente como Regular)
         -Si es VIP se debe ingresar el descuento de forma manual (se valida que el numero sea entre 0 a 100)
         -Si es Corporativo se debe ingresar la empresa, se valida si se ingresa texto en el campo empresa.
@@ -40,18 +41,19 @@ Simbologia:
 
 5. Buscar Cliente: (Al buscar cliente se muestran todos los datos ingresados)
     🟢Por ID:
-    ``Por Nombre:`` [pendiente]
+    🟢Por Nombre:
     ``Por Email:`` [pendiente]
 
 6. 🟢Guardar y Salir
 
+``* Revisar menus y dejarlos agradables visualmente`` [pendiente]
 
 ****************************
 
 Tipos de Usuarios (datos/atributos):
     1. Cliente (Nombre, Email, Fono) *No tendra descuentos
     2. Cliente VIP (Nombre, Email, Fono) *Al ingresar cliente vip, se selecciona cantidad de descuento. 
-    3. Cliente Corporativo (Nombre, Email, Fono, Empresa) *Tendra otro tipo de descuentos dependiendo de la empresa.
+    3. Cliente Corporativo (Nombre, Email, Fono, Empresa) *Tendra otro tipo de descuentos dependiendo de la empresa. (PythonCorp tiene 50% de descuento, otras empresas 10%)
 
 **************************
 
