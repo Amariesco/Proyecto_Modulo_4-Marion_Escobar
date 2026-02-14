@@ -230,8 +230,10 @@ def main():
                         print(cliente) # Print(cliente) llamar al __str__ para mostrar un resumen rápido en formato lista
                 else:
                     print(f"\nNo se encontró ningún cliente con: {nom_buscar}")
-            
-            else:
+                    
+            # elif tipo_busqueda == "3": # Para buscar cliente registrado por Email
+                
+            else: 
                 print("\nOpción de búsqueda no válida.")       
                      
         elif opcion == "6": # Si el usuario elige la opción 6, se guardarán los datos de los clientes en un archivo JSON y se cerrará la aplicación.
