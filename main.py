@@ -50,8 +50,14 @@ def main():
                         print("Error: Debe ingresar un número válido.")  
 
             elif tipo == "3":
-                empresa = input("Nombre de la Empresa: ")
-                nuevo = ClienteCorporativo(nuevo_id, nom, ema, fon, empresa)
+                while True: # Bucle para validar el nombre de la empresa
+                    empresa = input("Nombre de la Empresa: ")
+                    if sistema.validar_empresa(empresa):
+                        nuevo = ClienteCorporativo(nuevo_id, nom, ema, fon, empresa)
+                        break
+                    else:
+                        print("Error: El nombre de la empresa no puede estar vacío.")
+
             else:
                 nuevo = Cliente(nuevo_id, nom, ema, fon)
 
@@ -143,14 +149,20 @@ def main():
                                 print("\n¡Error! El descuento debe estar entre 0 y 100%")
                         except ValueError:
                             print("\n¡Error! Debe ingresar un número válido")
-                    
+
                     elif opcion_editar == "5" and hasattr(cliente, 'empresa'):
-                        nueva_empresa = input("\nIngrese el nuevo nombre de la empresa: ")
-                        if sistema.editar_cliente(id_editar, "empresa", nueva_empresa):
-                            print("\n¡Empresa actualizada con éxito!")
-                            print(f"Nuevo descuento: {cliente.descuento}%")
-                        else:
-                            print("\n¡Error al actualizar la empresa!")
+                        while True: # Añadimos un ciclo while
+                            nueva_empresa = input("\nIngrese el nuevo nombre de la empresa: ")
+                            if sistema.validar_empresa(nueva_empresa):
+                                if sistema.editar_cliente(id_editar, "empresa", nueva_empresa):
+                                    print("\n¡Empresa actualizada con éxito!")
+                                    print(f"Nuevo descuento: {cliente.descuento}%")
+                                    break
+                                else:
+                                    print("\n¡Error al actualizar la empresa!")
+                                    break
+                            else:
+                                print("Error: El nombre de la empresa no puede estar vacío.")
 
                     else:
                         print("\nLa opcion ingresada no es válida.")
@@ -202,6 +214,9 @@ def main():
                     # Mostrar empresa si es Corporativo
                     if hasattr(resultado, 'empresa'):
                         print(f"Empresa: {resultado.empresa}")
+
+
+                            
                 else:
                     print(f"\nNo se encontró ningún cliente con ID {id_buscar}")
                         
