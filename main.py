@@ -193,7 +193,7 @@ def main():
             print("2. Buscar por Nombre")
             #print("3. Buscar por Email")
             
-            tipo_busqueda = input("\nSeleccione tipo de búsqueda: ")
+            tipo_busqueda = input("\nIngrese una opcion: ")
             
             if tipo_busqueda == "1": # Buscara Cliente registrado por ID
                 try:
@@ -229,7 +229,7 @@ def main():
                     for cliente in coincidencias: # Si hay varias coincidencias, se mostrará un resumen de cada cliente encontrado (ID, nombre y tipo) para que el usuario pueda identificarlo fácilmente.
                         print(cliente) # Print(cliente) llamar al __str__ para mostrar un resumen rápido en formato lista
                 else:
-                    print(f"\nNo se encontró ningún cliente con el nombre: {nom_buscar}")
+                    print(f"\nNo se encontró ningún cliente con: {nom_buscar}")
             
             else:
                 print("\nOpción de búsqueda no válida.")       
