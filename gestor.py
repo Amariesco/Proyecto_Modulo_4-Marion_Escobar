@@ -112,8 +112,10 @@ class GestorClientes:
                 return False  # El cliente no tiene descuento
             
         elif campo == "empresa": # Solo para ClienteCorporativo
-            
             if hasattr(cliente, 'empresa'):
+                if not self.validar_empresa(nuevo_valor): # Si el nuevo valor no es una empresa válida, se retorna False para indicar que la edición no fue posible.
+                    return False # Empresa inválida
+
                 valor_anterior = cliente.empresa
                 cliente.empresa = nuevo_valor
 
@@ -142,6 +144,9 @@ class GestorClientes:
     
     @staticmethod # Método estático para validar formato de teléfono, asegurando que tenga exactamente 11 dígitos y solo números.
     def validar_fono(fono):
-        # Verifica que el fono tenga exactamente 11 caracteres y todos sean números
-        return fono.isdigit() and len(fono) == 9
+        return fono.isdigit() and len(fono) == 9 # Verifica que el fono tenga exactamente 11 caracteres y todos sean números
+
+    @staticmethod
+    def validar_empresa(empresa): # Valida que el nombre de la empresa no esté vacío ni compuesto solo de espacios
+        return len(empresa.strip()) > 0 # El método .strip() elimina los espacios al principio y al final, si después de limpiarlo queda algún caracter, es válido (True)
     

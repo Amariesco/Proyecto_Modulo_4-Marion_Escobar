@@ -23,12 +23,12 @@ Simbologia:
     🟢Email: (vadidar uso de @ y . despues del @) 
     🟢Fono: (validar cantidad de numeros 11 y que sea numerico) 
     ``Direccion: (Que sea texto + numeracion)`` [pendiente]
-    🟢Tipo de Cliente: (Que sea valido entre las opciones creadas, al menos 3 con diferentes comportamientos y atributos)
+    🟢Tipo de Cliente: 1. Regular | 2. VIP | 3. Corporativo (Si selecciona otro numero se asignara automaticamente como Regular)
+        -Si es VIP se debe ingresar el descuento de forma manual (se valida que el numero sea entre 0 a 100)
+        -Si es Corporativo se debe ingresar la empresa 
 
 
-2. Lista de Clientes: 
-    🟢(ID, Nombre, Tipo de cliente y Descuento)
-    ``(mostrar todos los datos)`` 
+2. Lista de Clientes: (Solo se muestra ID, Nombre, Tipo de cliente y Descuento)
 
 3. Editar Cliente:
     🟢(seleccionar que dato editar, se valida el tipo de cliente para editar descuento o empresa)
@@ -38,7 +38,7 @@ Simbologia:
     - Al eliminar, el sistema guarda cambios automáticamente en el archivo 'clientes.json'.
     - Incluye manejo de errores si el ID no existe o si se ingresan letras.
 
-5. Buscar Cliente:
+5. Buscar Cliente: (Al buscar cliente se muestran todos los datos ingresados)
     🟢Por ID:
     ``Por Nombre:`` [pendiente]
     ``Por Email:`` [pendiente]
