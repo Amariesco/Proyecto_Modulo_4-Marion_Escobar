@@ -73,7 +73,16 @@ class GestorClientes:
                 return cliente  # Retorna el cliente si lo encuentra
         return None  # Retorna None si no encuentra el cliente
     
-    pass  # Método para buscar clientes por nombre
+    # Método para buscar clientes por nombre
+    def buscar_por_nombre(self, nombre):
+        resultados = []
+        nombre_buscado = nombre.lower() # Se convierte la búsqueda a minúsculas
+        
+        for cliente in self.lista_clientes: # Para verificar si lo que el usuario escribió está contenido en el nombre del cliente
+            if nombre_buscado in cliente.nombre.lower(): # .lower() para que ignore mayúsculas y minúsculas, ya que convierte el nombre del cliente a minúsculas
+                resultados.append(cliente) # append para agregar el cliente a la lista de resultados si coincide con la búsqueda (si el nombre buscado está contenido en el nombre del cliente, se agrega a la lista de resultados)
+                
+        return resultados # Retorna una lista (puede estar vacía o tener varios clientes)
 
     pass # Método para buscar clientes por email
     
