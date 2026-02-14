@@ -187,42 +187,53 @@ def main():
                 print("\nPor favor, ingrese un número de ID válido.")
 
         elif opcion == "5": # Si el usuario elige la opción 5, podrá buscar clientes por ID, Nombre o Email
-            print("\n Buscar cliente por ID ")
-            # ----> por completar en futuras actualizaciones para agregar búsqueda por nombre y email
-            #print("1. Buscar por ID") 
-            #print("2. Buscar por Nombre")
+            print("\n Buscar cliente ")
+            # ----> por completar en futuras actualizaciones para agregar búsqueda por email
+            print("1. Buscar por ID") 
+            print("2. Buscar por Nombre")
             #print("3. Buscar por Email")
             
-            #tipo_busqueda = input("\nSeleccione tipo de búsqueda: ")
+            tipo_busqueda = input("\nSeleccione tipo de búsqueda: ")
             
-            #if tipo_busqueda == "1": # Buscara Cliente registrado por ID
-            try:
-                id_buscar = int(input("Ingrese el ID del cliente: "))
-                resultado = sistema.buscar_por_id(id_buscar)
+            if tipo_busqueda == "1": # Buscara Cliente registrado por ID
+                try:
+                    id_buscar = int(input("Ingrese el ID del cliente: "))
+                    resultado = sistema.buscar_por_id(id_buscar)
+                          
+                    if resultado:
+                        print(f"\nCliente con ID {id_buscar} a sido encontrado")
+                        
+                        print(f"\nNombre: {resultado.nombre}")
+                        print(f"Email: {resultado.email}")
+                        print(f"Fono: {resultado.fono}")
+                        print(f"Tipo de cliente: {resultado.tipo}")
+                        
+                        # Mostrar descuento si es VIP o Corporativo
+                        if hasattr(resultado, 'descuento'):
+                            print(f"Descuento: {resultado.descuento}%")
+                        # Mostrar empresa si es Corporativo
+                        if hasattr(resultado, 'empresa'):
+                            print(f"Empresa: {resultado.empresa}")          
+                    else:
+                        print(f"\nNo se encontró ningún cliente con ID {id_buscar}")
+                        
+                except ValueError:
+                    print("\nError: Debe ingresar un número válido de ID")
                     
-                if resultado:
-                    print(f"\nCliente con ID {id_buscar} a sido encontrado")
-                        
-                    print(f"\nNombre: {resultado.nombre}")
-                    print(f"Email: {resultado.email}")
-                    print(f"Fono: {resultado.fono}")
-                    print(f"Tipo de cliente: {resultado.tipo}")
-                        
-                    # Mostrar descuento si es VIP o Corporativo
-                    if hasattr(resultado, 'descuento'):
-                        print(f"Descuento: {resultado.descuento}%")
-                    # Mostrar empresa si es Corporativo
-                    if hasattr(resultado, 'empresa'):
-                        print(f"Empresa: {resultado.empresa}")
-
-
-                            
+            elif tipo_busqueda == "2": # Para buscar cliente registrado por nombre (o parte del nombre)
+                nom_buscar = input("Ingrese el nombre o apellido a buscar: ")
+                coincidencias = sistema.buscar_por_nombre(nom_buscar)
+                
+                if coincidencias:
+                    print(f"\nSe encontraron {len(coincidencias)} coincidencia(s):")
+                    for cliente in coincidencias: # Si hay varias coincidencias, se mostrará un resumen de cada cliente encontrado (ID, nombre y tipo) para que el usuario pueda identificarlo fácilmente.
+                        print(cliente) # Print(cliente) llamar al __str__ para mostrar un resumen rápido en formato lista
                 else:
-                    print(f"\nNo se encontró ningún cliente con ID {id_buscar}")
-                        
-            except ValueError:
-                print("\nError: Debe ingresar un número válido de ID")
-
+                    print(f"\nNo se encontró ningún cliente con el nombre: {nom_buscar}")
+            
+            else:
+                print("\nOpción de búsqueda no válida.")       
+                     
         elif opcion == "6": # Si el usuario elige la opción 6, se guardarán los datos de los clientes en un archivo JSON y se cerrará la aplicación.
             print("\nGuardando datos y saliendo del sistema...")
             print("¡Hasta luego!")
@@ -232,5 +243,5 @@ def main():
             print("La opción no es válida, intente nuevamente:")
             break
 
-if __name__ == "__main__":
-    main()
+if __name__ == "__main__": # Punto de entrada del programa, se llama a la función main para iniciar la aplicación.
+    main() # Llama a la función main para iniciar la aplicación de gestión de clientes.
