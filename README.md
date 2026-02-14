@@ -25,7 +25,7 @@ Simbologia:
     ``Direccion: (Que sea texto + numeracion)`` [pendiente]
     🟢Tipo de Cliente: 1. Regular | 2. VIP | 3. Corporativo (Si selecciona otro numero se asignara automaticamente como Regular)
         -Si es VIP se debe ingresar el descuento de forma manual (se valida que el numero sea entre 0 a 100)
-        -Si es Corporativo se debe ingresar la empresa 
+        -Si es Corporativo se debe ingresar la empresa, se valida si se ingresa texto en el campo empresa.
 
 
 2. Lista de Clientes: (Solo se muestra ID, Nombre, Tipo de cliente y Descuento)
